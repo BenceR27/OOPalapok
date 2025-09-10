@@ -8,7 +8,7 @@ namespace OOPalapok
 {
     public class Szemely
     {
-        public string nev;
+        private string nev;
         public int kor;
 
         public string Nev
@@ -20,28 +20,13 @@ namespace OOPalapok
         public int Kor
         {
             get { return kor; }
-            set 
-            { 
-                if (value < 0)
-                {
-                    kor = 0;
-                }
-                else
-                {
-                    kor = value; 
-                }
-            }
-        }
-        /*public Szemely(string Nev, int Kor)
-        {
-            nev = Nev;
-            kor = Kor;
+            set { kor = value; }
         }
 
-        public string Kiir()
+        public override string ToString()
         {
-            return $"A tanulo neve: {nev} és {kor} éves";
-        }*/
+            return $"A személy neve {nev}, életkora {kor}";
+        }
     }
     internal class Program
     {
@@ -49,14 +34,10 @@ namespace OOPalapok
         {
             Szemely tanulo1 = new Szemely();
             tanulo1.Nev = "Gábor";
-            Console.WriteLine(tanulo1.Nev);
             tanulo1.Kor = 23;
-            Console.WriteLine(tanulo1.Kor);
 
-            /*Szemely tanulo1 = new Szemely("Jani", 55);
-            Console.WriteLine(tanulo1.Kiir());
-            Szemely tanulo2 = new Szemely("Feri", 45);
-            Console.WriteLine(tanulo2.Kiir());*/
+            Console.WriteLine(tanulo1);
+            
         }
     }
 }
