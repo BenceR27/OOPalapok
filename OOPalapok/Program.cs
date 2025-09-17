@@ -14,6 +14,12 @@ namespace OOPalapok
         protected string nev;
         public int kor;
 
+        public Szemely(string name, int age)
+        {
+            nev = name;
+            kor = age;
+        }
+
         public string Nev
         {
             get { return nev; } 
@@ -63,6 +69,11 @@ namespace OOPalapok
     {
         private string neptunKod;
 
+        public Hallgato(string name, int age, string neptuncode) : base(name, age)
+        {
+            neptunKod = neptuncode;
+        }
+
         public string NeptunKod
         {
             get { return neptunKod; }
@@ -75,6 +86,11 @@ namespace OOPalapok
             }
         }
 
+        public override string ToString()
+        {
+            return $"A hallgató neve {nev} neptun kódja {neptunKod}";
+        }
+
         public void Kiir()
         {
             nev = string.Empty;
@@ -82,14 +98,30 @@ namespace OOPalapok
 
     }
 
+    public class Dolgozo : Szemely
+    {
+        private int ber;
+
+        public Dolgozo(string name, int age, int salary) : base(name, age)
+        {
+            ber = salary;
+        }
+
+        public override string ToString()
+        {
+            return $"A dolgozó neve {nev} a bére {ber}";
+        }
+        
+    }
+
     internal class Program
     {
         static void Main(string[] args)
         {
-            Szemely tanulo1 = new Szemely();
+            /*Szemely tanulo1 = new Szemely();
             tanulo1.Nev = "Gábor";
             tanulo1.Kor = 23;
-            Console.WriteLine(tanulo1);
+            Console.WriteLine(tanulo1);*/
 
             Console.WriteLine("---------------------");
 
@@ -99,15 +131,15 @@ namespace OOPalapok
 
             Console.WriteLine("---------------------");
 
-            Hallgato hallgato1 = new Hallgato();
+            /*Hallgato hallgato1 = new Hallgato();
             hallgato1.NeptunKod = "RIZZ27";
-            Console.WriteLine(hallgato1.NeptunKod);
+            Console.WriteLine(hallgato1.NeptunKod);*/
 
             Console.WriteLine("---------------------");
 
             List<Hallgato> hallgatok = new List<Hallgato>();
 
-            for (int i = 0; i < 2; i++)
+            /*for (int i = 0; i < 2; i++)
             {
                 Hallgato hallgato = new Hallgato();
                 Console.Write($"Kérem a(z) {i + 1} hallgató nevét: ");
@@ -122,9 +154,15 @@ namespace OOPalapok
             foreach (var item in hallgatok)
             {
                 Console.WriteLine(item.Nev);
-            }
+            }*/
 
             Console.WriteLine("---------------------");
+
+            Hallgato hallgato1 = new Hallgato("Peti", 22 , "R1Z999");
+            Console.WriteLine(hallgato1);
+
+            Dolgozo dolgozo1 = new Dolgozo("Gábor", 43 ,7500);
+            Console.WriteLine(dolgozo1);
         }
     }
 }
