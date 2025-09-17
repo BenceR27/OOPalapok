@@ -10,7 +10,7 @@ namespace OOPalapok
 {
     public class Szemely
     {
-        private string nev;
+        protected string nev;
         public int kor;
 
         public string Nev
@@ -60,7 +60,24 @@ namespace OOPalapok
 
     public class Hallgato : Szemely
     {
-        public int neptunKod;
+        private string neptunKod;
+
+        public string NeptunKod
+        {
+            get { return neptunKod; }
+            set 
+            {
+                if (value.Length <= 6)
+                    neptunKod = value;
+                else
+                    Console.WriteLine("Nem megfelelő hosszúság."); 
+            }
+        }
+
+        public void Kiir()
+        {
+            nev = string.Empty;
+        }
 
     }
 
@@ -73,11 +90,18 @@ namespace OOPalapok
             tanulo1.Kor = 23;
 
             Console.WriteLine(tanulo1);
+            Console.WriteLine("---------------------");
 
             Bankszamla bankszamla1 = new Bankszamla();
-            bankszamla1.Egyenleg = -23000;
+            bankszamla1.Egyenleg = 23000;
             Console.WriteLine(bankszamla1.Egyenleg);
-            
+            Console.WriteLine("---------------------");
+
+            Hallgato hallgato1 = new Hallgato();
+            hallgato1.NeptunKod = "RIZZ27";
+            Console.WriteLine(hallgato1.NeptunKod);
+            Console.WriteLine("---------------------");
+
         }
     }
 }
